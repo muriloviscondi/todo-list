@@ -2,10 +2,7 @@
 
 import { DeleteIcon } from '@/app/components/icons';
 import { Flex } from '@/app/components/layout';
-import { IconButton } from '@/app/components/ui/iconButton';
-import { Tag } from '@/app/components/ui/Tag';
-import { Text } from '@/app/components/ui/Text';
-import { Title } from '@/app/components/ui/title';
+import { IconButton, Tag, Text, Title } from '@/app/components/ui';
 import { StatusType } from '@/app/data/mock';
 import TaskToggleButton from '@/app/features/todoList/components/taskToggleButton';
 import { useCallback } from 'react';

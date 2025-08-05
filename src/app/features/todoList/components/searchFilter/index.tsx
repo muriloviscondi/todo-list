@@ -1,7 +1,5 @@
-import React from 'react';
 import { Flex } from '@/app/components/layout';
-import { Button } from '@/app/components/ui/button';
-import { SearchInput } from '@/app/components/ui/searchInput';
+import { Button, SearchInput } from '@/app/components/ui';
 import styles from './SearchFilter.module.scss';
 
 export type TaskFilterType = 'all' | 'concluded' | 'pending';
@@ -31,6 +29,7 @@ export const SearchFilter = ({
 
       <div className={styles.wrapper}>
         <Button
+          active={filterInput === 'all'}
           className={getButtonClass('all')}
           size="sm"
           onClick={() => onChangeFilter('all')}
@@ -38,6 +37,7 @@ export const SearchFilter = ({
           Todos
         </Button>
         <Button
+          active={filterInput === 'concluded'}
           className={getButtonClass('concluded')}
           size="sm"
           onClick={() => onChangeFilter('concluded')}
@@ -45,6 +45,7 @@ export const SearchFilter = ({
           Concluídas
         </Button>
         <Button
+          active={filterInput === 'pending'}
           className={getButtonClass('pending')}
           size="sm"
           onClick={() => onChangeFilter('pending')}

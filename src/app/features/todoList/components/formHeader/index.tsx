@@ -2,8 +2,7 @@
 
 import { PlusIcon } from '@/app/components/icons';
 import { Flex } from '@/app/components/layout';
-import { Button } from '@/app/components/ui/button';
-import { Input } from '@/app/components/ui/Input';
+import { Button, Input } from '@/app/components/ui';
 
 type Props = {
   inputTitle: string;
@@ -25,10 +24,10 @@ export const FormHeader = ({
       style={{ width: '100%' }}
     >
       <Input
-        width={'100%'}
         value={inputTitle}
         onChange={(e) => onInputChange(e.target.value)}
         placeholder="Adicionar nova tarefa"
+        style={{ width: '100%' }}
       />
 
       <Button shape="circle" size="sm" variant="success" onClick={onConclude}>

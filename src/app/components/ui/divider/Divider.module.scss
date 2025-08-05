@@ -1,22 +1,6 @@
 .divider {
-  flex-shrink: 0;
-  background-color: #e0e0e0;
-
-  &.horizontal {
-    height: 1px;
-    width: 100%;
-  }
-
-  &.vertical {
-    width: 1px;
-    height: 100%;
-  }
-
-  &.light {
-    background-color: #f5f5f5;
-  }
-
-  &.default {
-    background-color: #e0e0e0;
-  }
+  border: none;
+  height: 1px;
+  background-color: #e1e5e9;
+  margin: 1.5rem 0;
 }

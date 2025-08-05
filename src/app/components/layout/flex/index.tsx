@@ -6,7 +6,6 @@ export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
   direction?: CSSProperties['flexDirection'];
   justifyContent?: CSSProperties['justifyContent'];
   alignItems?: CSSProperties['alignItems'];
-  flexWrap?: CSSProperties['flexWrap'];
   children: React.ReactNode;
 }
 
@@ -15,7 +14,6 @@ export const Flex: React.FC<FlexProps> = ({
   direction = 'row',
   justifyContent = 'flex-start',
   alignItems = 'stretch',
-  flexWrap = 'nowrap',
   children,
   className,
   style,
@@ -27,7 +25,6 @@ export const Flex: React.FC<FlexProps> = ({
     flexDirection: direction,
     justifyContent,
     alignItems,
-    flexWrap,
     gap: typeof gap === 'number' ? `${gap}px` : gap,
     ...style,
   };

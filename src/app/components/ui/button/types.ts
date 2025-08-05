@@ -1,4 +1,4 @@
-export type Variant = 'default' | 'primary' | 'success' | 'danger' | 'warning';
+export type Variant = 'default' | 'success' | 'danger';
 
 export type Size = 'sm' | 'md' | 'lg';
 

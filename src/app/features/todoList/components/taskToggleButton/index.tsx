@@ -1,7 +1,7 @@
 'use client';
 
 import { CheckIcon, CircleIcon } from '@/app/components/icons';
-import { IconButton } from '@/app/components/ui/iconButton';
+import { IconButton } from '@/app/components/ui';
 
 import { AnimatePresence, motion } from 'motion/react';
 

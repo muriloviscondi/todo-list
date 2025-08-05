@@ -1,1 +1,0 @@
-// Configurações principais da aplicação

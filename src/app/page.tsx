@@ -1,8 +1,7 @@
 'use client';
 
 import { Container, Flex } from '@/app/components/layout';
-import { Divider } from '@/app/components/ui/Divider';
-import { Title } from '@/app/components/ui/title';
+import { Divider, Title } from '@/app/components/ui';
 import { TodoItem, todoListMock } from '@/app/data/mock';
 import {
   Card,

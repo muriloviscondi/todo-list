@@ -1,26 +1,18 @@
 import React from 'react';
 import styles from './Tag.module.scss';
 
-export type TagType = 'success' | 'warning' | 'error' | 'info' | 'default';
+type TagType = 'success' | 'warning';
 
-export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
-  type?: TagType;
+interface TagProps {
+  type: TagType;
   description: string;
+  className?: string;
 }
 
-export const Tag = ({
-  description,
-  type = 'default',
-  className,
-  ...props
-}: TagProps) => {
+export const Tag = ({ type, description, className }: TagProps) => {
   const tagClasses = [styles.tag, styles[type], className]
     .filter(Boolean)
     .join(' ');
 
-  return (
-    <span className={tagClasses} {...props}>
-      {description}
-    </span>
-  );
+  return <span className={tagClasses}>{description}</span>;
 };

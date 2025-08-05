@@ -4,7 +4,7 @@ import { IconButtonProps } from './types';
 
 export const IconButton = ({
   children,
-  variant = 'default',
+  variant = 'warning',
   size = 'md',
   className,
   ...props
