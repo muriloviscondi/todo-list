@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export type StatusType = 'concluded' | 'pending' | 'cancelled';
+export type StatusType = 'concluded' | 'pending';
 
 export interface TodoItem {
   id: string;
@@ -12,121 +12,121 @@ export interface TodoItem {
 export const todoListMock: TodoItem[] = [
   {
     id: uuidv4(),
-    task: 'Finish Next.js project',
+    task: 'Finalizar projeto Next.js',
     createdAt: new Date('2025-08-05T17:00:00'),
     status: 'pending',
   },
   {
     id: uuidv4(),
-    task: 'Review PR #42',
+    task: 'Revisar PR #42',
     createdAt: new Date('2025-08-04T12:00:00'),
     status: 'concluded',
   },
   {
     id: uuidv4(),
-    task: 'Team meeting',
+    task: 'Reunião da equipe',
     createdAt: new Date('2025-08-06T09:00:00'),
     status: 'pending',
   },
   {
     id: uuidv4(),
-    task: 'Write unit tests',
+    task: 'Escrever testes unitários',
     createdAt: new Date('2025-08-07T15:30:00'),
     status: 'pending',
   },
   {
     id: uuidv4(),
-    task: 'Fix login bug',
+    task: 'Corrigir bug do login',
     createdAt: new Date('2025-08-04T10:00:00'),
     status: 'concluded',
   },
   {
     id: uuidv4(),
-    task: 'Update documentation',
+    task: 'Atualizar documentação',
     createdAt: new Date('2025-08-08T14:00:00'),
     status: 'pending',
   },
   {
     id: uuidv4(),
-    task: 'Deploy staging',
+    task: 'Deploy para staging',
     createdAt: new Date('2025-08-05T20:00:00'),
     status: 'pending',
   },
   {
     id: uuidv4(),
-    task: 'Code cleanup',
+    task: 'Limpeza do código',
     createdAt: new Date('2025-08-03T18:00:00'),
     status: 'concluded',
   },
   {
     id: uuidv4(),
-    task: 'Design review',
+    task: 'Revisão do design',
     createdAt: new Date('2025-08-07T11:00:00'),
     status: 'pending',
   },
   {
     id: uuidv4(),
-    task: 'Set up analytics',
+    task: 'Configurar analytics',
     createdAt: new Date('2025-08-06T16:00:00'),
     status: 'pending',
   },
   {
     id: uuidv4(),
-    task: 'Refactor sidebar',
+    task: 'Refatorar sidebar',
     createdAt: new Date('2025-08-05T13:00:00'),
     status: 'concluded',
   },
   {
     id: uuidv4(),
-    task: 'Plan marketing campaign',
+    task: 'Planejar campanha de marketing',
     createdAt: new Date('2025-08-10T09:00:00'),
     status: 'pending',
   },
   {
     id: uuidv4(),
-    task: 'Customer feedback',
+    task: 'Feedback dos clientes',
     createdAt: new Date('2025-08-09T15:00:00'),
     status: 'pending',
   },
   {
     id: uuidv4(),
-    task: 'Optimize images',
+    task: 'Otimizar imagens',
     createdAt: new Date('2025-08-04T14:00:00'),
     status: 'concluded',
   },
   {
     id: uuidv4(),
-    task: 'Backup database',
+    task: 'Backup do banco de dados',
     createdAt: new Date('2025-08-05T22:00:00'),
     status: 'pending',
   },
   {
     id: uuidv4(),
-    task: 'Write blog post',
+    task: 'Escrever post do blog',
     createdAt: new Date('2025-08-11T10:00:00'),
     status: 'pending',
   },
   {
     id: uuidv4(),
-    task: 'Update dependencies',
+    task: 'Atualizar dependências',
     createdAt: new Date('2025-08-06T17:00:00'),
     status: 'concluded',
   },
   {
     id: uuidv4(),
-    task: 'Improve accessibility',
+    task: 'Melhorar acessibilidade',
     createdAt: new Date('2025-08-07T12:00:00'),
     status: 'pending',
   },
   {
     id: uuidv4(),
-    task: 'Prepare presentation',
+    task: 'Preparar apresentação',
     createdAt: new Date('2025-08-08T09:00:00'),
     status: 'pending',
   },
   {
     id: uuidv4(),
-    task: 'Test payment flow',
+    task: 'Testar fluxo de pagamento',
     createdAt: new Date('2025-08-09T13:00:00'),
     status: 'pending',
   },

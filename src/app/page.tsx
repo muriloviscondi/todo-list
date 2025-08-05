@@ -14,9 +14,6 @@ export default function HomePage() {
   const [filterInput, setFilterInput] = useState<TaskFilterType>('all');
 
   const [inputProps, setInputProps] = useState('');
-  const [expanded, setExpanded] = useState(false);
-
-  const handleExpandChange = () => setExpanded((state) => !state);
 
   const cardData = useMemo(() => {
     return !!searchTerm || filterInput !== 'all'

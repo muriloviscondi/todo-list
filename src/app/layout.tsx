@@ -16,8 +16,9 @@ const leagueSpartan = League_Spartan({
 });
 
 export const metadata: Metadata = {
-  title: 'To Do List App',
-  description: 'A modern to-do list application built with Next.js 15',
+  title: 'Lista de Tarefas',
+  description:
+    'Uma aplicação moderna de lista de tarefas construída com Next.js 15',
 };
 
 export default function RootLayout({

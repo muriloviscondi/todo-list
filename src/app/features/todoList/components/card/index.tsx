@@ -17,6 +17,11 @@ type CardProps = {
   onDelete: (id: string) => void;
 };
 
+const statusLabels = {
+  concluded: 'CONCLUÍDA',
+  pending: 'PENDENTE',
+} as const;
+
 export const Card = ({
   id,
   title,
@@ -69,7 +74,7 @@ export const Card = ({
             </Text>
             <Tag
               type={status === 'concluded' ? 'success' : 'warning'}
-              description={status?.toUpperCase()}
+              description={statusLabels[status]}
             />
           </Flex>
         </Flex>

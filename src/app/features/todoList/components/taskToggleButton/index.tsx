@@ -18,7 +18,9 @@ export default function TaskToggleButton({
     <IconButton
       size={'md'}
       variant={isConcluded ? 'success' : 'warning'}
-      aria-label={isConcluded ? 'Mark as open' : 'Mark as done'}
+      aria-label={
+        isConcluded ? 'Marcar como pendente' : 'Marcar como concluída'
+      }
       onClick={onToggle}
     >
       <AnimatePresence mode="wait" initial={false}>

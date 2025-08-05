@@ -27,7 +27,7 @@ export const FormHeader = ({
         width={'100%'}
         value={inputTitle}
         onChange={(e) => onInputChange(e.target.value)}
-        placeholder="Task title"
+        placeholder="Tarefa a realizar"
       />
 
       <Button shape="circle" variant="success" onClick={onConclude}>
