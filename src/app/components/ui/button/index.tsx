@@ -1,22 +1,29 @@
-'use client';
-
 import React from 'react';
 import * as S from './styles';
+import { StyledButtonProps } from './types';
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: S.Variant;
-  size?: S.Size;
-}
+export interface Props
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    StyledButtonProps {}
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = ({
   children,
   variant = 'default',
   size = 'md',
+  type = 'button',
+  shape = 'default',
+  active = false,
   ...props
-}) => {
+}: Props) => {
   return (
-    <S.StyledButton variant={variant} size={size} {...props}>
+    <S.StyledButton
+      variant={variant}
+      size={size}
+      type={type}
+      shape={shape}
+      active={active}
+      {...props}
+    >
       {children}
     </S.StyledButton>
   );

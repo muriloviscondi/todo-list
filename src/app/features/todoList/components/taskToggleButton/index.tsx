@@ -1,3 +1,5 @@
+'use client';
+
 import { CheckIcon, CircleIcon } from '@icons';
 import { IconButton } from '@ui';
 

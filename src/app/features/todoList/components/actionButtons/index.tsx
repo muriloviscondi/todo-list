@@ -1,3 +1,5 @@
+'use client';
+
 import { DeleteIcon, EditIcon } from '@icons';
 import { Flex } from '@layout';
 import { IconButton } from '@ui';

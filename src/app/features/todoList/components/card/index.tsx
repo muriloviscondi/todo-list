@@ -1,3 +1,5 @@
+'use client';
+
 import { Flex } from '@layout';
 import { Tag, Text, Title } from '@ui';
 import { StatusType } from '../../../../data/mock';

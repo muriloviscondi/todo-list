@@ -1,16 +1,27 @@
 'use client';
 
 import { Container, Flex } from '@layout';
-import { Card, SearchFilter, TaskFilterType } from '@todoList';
-import { Button, Text, Title } from '@ui';
+import { Card, FormHeader, SearchFilter, TaskFilterType } from '@todoList';
+import { Divider } from '@ui';
+import { formatDate } from '@utils';
 import { useCallback, useMemo, useState } from 'react';
 import { todoListMock } from './data/mock';
-import { formatDate } from '@utils';
+
+const defaultInputProps = {
+  title: '',
+  description: '',
+};
 
 export default function HomePage() {
   const [data, setData] = useState(todoListMock);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [filterInput, setFilterInput] = useState<TaskFilterType>('all');
+
+  const [inputProps, setInputProps] = useState(defaultInputProps);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpandChange = () => setExpanded((state) => !state);
 
   const cardData = useMemo(() => {
     return !!searchTerm || filterInput !== 'all'
@@ -24,10 +35,6 @@ export default function HomePage() {
         )
       : data;
   }, [data, filterInput, searchTerm]);
-
-  const handleChangeOpenModal = useCallback(() => {
-    // Placeholder para futuras funcionalidades
-  }, []);
 
   const handleChangeStatus = useCallback((id: string) => {
     setData((prevData) =>
@@ -46,18 +53,26 @@ export default function HomePage() {
     setSearchTerm(term);
   }, []);
 
+  const handleTitleChange = useCallback((value: string) => {
+    setInputProps((prev) => ({ ...prev, title: value }));
+  }, []);
+
   return (
     <>
       <Container>
-        <Flex alignItems="baseline" justifyContent="space-between">
-          <Flex direction="column" gap="0.5rem">
-            <Title level={1}>To-Do List</Title>
-            <Text>Manage your tasks efficiently</Text>
-          </Flex>
-          <Button variant="primary" onClick={handleChangeOpenModal}>
-            Nova Tarefa
-          </Button>
+        <Flex
+          alignItems="flex-start"
+          justifyContent="space-between"
+          gap={'1rem'}
+        >
+          <FormHeader
+            inputTitle={inputProps.title}
+            onTitleChange={handleTitleChange}
+            onConclude={() => {}}
+          />
         </Flex>
+
+        <Divider />
 
         <SearchFilter
           filterInput={filterInput}
@@ -66,7 +81,13 @@ export default function HomePage() {
           onSearch={handleSearch}
         />
 
-        <Flex direction="column" gap="1rem">
+        <Divider />
+
+        <Flex
+          direction="column"
+          gap="1rem"
+          style={{ maxHeight: 'calc(100vh - 15.125rem)', overflowY: 'auto' }}
+        >
           {cardData.map((item) => (
             <Card
               key={item.id}

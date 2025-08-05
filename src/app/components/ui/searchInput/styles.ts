@@ -1,3 +1,4 @@
+import { SearchIcon } from '@icons';
 import { styled } from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -5,7 +6,7 @@ export const Wrapper = styled.div`
   width: 100%;
 `;
 
-export const Icon = styled.svg`
+export const Icon = styled(SearchIcon)`
   position: absolute;
   left: 12px;
   top: 50%;

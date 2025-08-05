@@ -1,6 +1,6 @@
-import { Flex } from '@layout';
-import { SearchInput } from './searchInput';
-import { FilterInput } from './filterInput';
+import { SearchInput } from '@ui';
+
+import * as S from './styles';
 
 export type TaskFilterType = 'all' | 'concluded' | 'pending';
 
@@ -18,9 +18,33 @@ export const SearchFilter = ({
   onSearch,
 }: Props) => {
   return (
-    <Flex gap={'1.5rem'} alignItems="center">
+    <S.Container
+      gap={'1.5rem'}
+      alignItems="center"
+      style={{ display: 'inline-flex' }}
+    >
       <SearchInput onChange={onSearch} value={searchTerm} />
-      <FilterInput selected={filterInput} onChange={onChangeFilter} />
-    </Flex>
+
+      <S.Wrapper>
+        <S.Button
+          $active={filterInput === 'all'}
+          onClick={() => onChangeFilter('all')}
+        >
+          Todos
+        </S.Button>
+        <S.Button
+          $active={filterInput === 'concluded'}
+          onClick={() => onChangeFilter('concluded')}
+        >
+          Concluídas
+        </S.Button>
+        <S.Button
+          $active={filterInput === 'pending'}
+          onClick={() => onChangeFilter('pending')}
+        >
+          Pendentes
+        </S.Button>
+      </S.Wrapper>
+    </S.Container>
   );
 };
