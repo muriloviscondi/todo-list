@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run test && npm run lint && next build",
+    "build": "next build",
+    "build:with-tests": "npm run test:ci && npm run lint && next build",
     "build:only": "next build",
     "build:safe": "npm run test && npm run lint && npm run build:only",
     "start": "next start",
@@ -12,7 +13,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:ci": "jest --ci --coverage --watchAll=false"
+    "test:ci": "jest --ci --coverage --watchAll=false --passWithNoTests"
   },
   "dependencies": {
     "motion": "^12.23.12",

@@ -17,6 +17,11 @@ const customJestConfig = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
+  // Configurações para CI
+  maxWorkers: process.env.CI ? 1 : '50%',
+  cache: false,
+  silent: process.env.CI ? true : false,
+  verbose: process.env.CI ? false : true,
 };
 
 module.exports = createJestConfig(customJestConfig);
