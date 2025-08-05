@@ -95,7 +95,7 @@ export default function HomePage() {
         <Flex
           direction="column"
           gap="1rem"
-          style={{ maxHeight: 'calc(100vh - 15.125rem)', overflowY: 'auto' }}
+          style={{ maxHeight: 'calc(100vh - 18.375rem)', overflowY: 'auto' }}
         >
           {cardData.map((item) => (
             <Card
