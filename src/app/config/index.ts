@@ -1,1 +1,1 @@
-export * from './libs';
+// Configurações principais da aplicação

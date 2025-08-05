@@ -1,35 +1,15 @@
 'use client';
 
+import React, { useCallback, useMemo, useState } from 'react';
 import { SearchFilter } from '@/app/components/SearchFilter';
 import { TodoForm } from '@/app/components/TodoForm';
 import { TodoItem as TodoItemComponent } from '@/app/components/TodoItem';
 import { Container } from '@/app/components/layout';
 import { TodoItem } from '@/app/types/todo';
 import { formatDate } from '@/app/utils';
-import { useCallback, useMemo, useState } from 'react';
-import styled from 'styled-components';
+import styles from './TodoList.module.scss';
 
 type TaskFilterType = 'all' | 'pending' | 'concluded';
-
-const Title = styled.h1`
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: #333;
-`;
-
-const Divider = styled.hr`
-  border: none;
-  height: 1px;
-  background-color: #e1e5e9;
-  margin: 1.5rem 0;
-`;
-
-const TodoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
 
 export function TodoList() {
   const [todos, setTodos] = useState<TodoItem[]>([]);
@@ -75,11 +55,11 @@ export function TodoList() {
 
   return (
     <Container>
-      <Title>Lista de Tarefas</Title>
+      <h1 className={styles.title}>Lista de Tarefas</h1>
 
       <TodoForm onCreateTodo={handleCreateTodo} />
 
-      <Divider />
+      <hr className={styles.divider} />
 
       <SearchFilter
         searchTerm={searchTerm}
@@ -88,9 +68,9 @@ export function TodoList() {
         onFilterChange={setFilterType}
       />
 
-      <Divider />
+      <hr className={styles.divider} />
 
-      <TodoContainer>
+      <div className={styles.todoContainer}>
         {filteredTodos.map((todo) => (
           <TodoItemComponent
             key={todo.id}
@@ -100,7 +80,7 @@ export function TodoList() {
             footer={`Data de criação: ${formatDate(todo.createdAt)}`}
           />
         ))}
-      </TodoContainer>
+      </div>
     </Container>
   );
 }

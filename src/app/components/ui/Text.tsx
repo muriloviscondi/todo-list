@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styles from './Text.module.scss';
 
 type TextSize = 'sm' | 'md' | 'lg';
 
@@ -7,24 +7,28 @@ interface TextProps {
   children: React.ReactNode;
   size?: TextSize;
   $isLineThrough?: boolean;
+  className?: string;
 }
 
-const StyledText = styled.span<TextProps>`
-  font-size: ${props => {
-    switch (props.size) {
-      case 'sm': return '0.875rem';
-      case 'lg': return '1.125rem';
-      default: return '1rem';
-    }
-  }};
-  text-decoration: ${props => props.$isLineThrough ? 'line-through' : 'none'};
-  color: inherit;
-`;
+export const Text = ({
+  children,
+  size = 'md',
+  $isLineThrough = false,
+  className,
+  ...props
+}: TextProps) => {
+  const textClasses = [
+    styles.text,
+    styles[size],
+    $isLineThrough ? styles.lineThrough : '',
+    className || '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-export const Text = ({ children, size = 'md', $isLineThrough = false, ...props }: TextProps) => {
   return (
-    <StyledText size={size} $isLineThrough={$isLineThrough} {...props}>
+    <span className={textClasses} {...props}>
       {children}
-    </StyledText>
+    </span>
   );
-}; 
+};

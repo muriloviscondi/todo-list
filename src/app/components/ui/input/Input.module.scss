@@ -1,8 +1,4 @@
-'use client';
-
-import styled from 'styled-components';
-
-export const StyledInput = styled.input`
+.input {
   font-size: 1rem;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
@@ -16,4 +12,4 @@ export const StyledInput = styled.input`
     border-color: #03a9f4;
     box-shadow: 0 0 0 2px rgba(3, 169, 244, 0.2);
   }
-`;
+}

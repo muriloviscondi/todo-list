@@ -1,22 +1,31 @@
-import styled from 'styled-components';
-import { DividerProps } from './types';
+import React from 'react';
+import styles from './Divider.module.scss';
 
-export const Divider = styled.div<DividerProps>`
-  ${({ vertical, spacing = '16px', color = 'default' }) => `
-    ${
-      vertical
-        ? `
-        width: 1px;
-        height: 100%;
-        margin: 0 ${spacing};
-      `
-        : `
-        height: 1px;
-        width: 100%;
-        margin: ${spacing} 0;
-      `
-    }
-    background-color: ${color === 'light' ? '#f5f5f5' : '#e0e0e0'};
-    flex-shrink: 0;
-  `}
-`;
+export type DividerProps = {
+  vertical?: boolean;
+  spacing?: string;
+  color?: 'light' | 'default';
+  className?: string;
+};
+
+export const Divider = ({
+  vertical = false,
+  spacing = '16px',
+  color = 'default',
+  className,
+}: DividerProps) => {
+  const dividerClasses = [
+    styles.divider,
+    vertical ? styles.vertical : styles.horizontal,
+    styles[color],
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  const dividerStyle = vertical
+    ? { margin: `0 ${spacing}` }
+    : { margin: `${spacing} 0` };
+
+  return <div className={dividerClasses} style={dividerStyle} />;
+};

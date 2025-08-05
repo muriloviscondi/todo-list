@@ -1,6 +1,8 @@
 'use client';
 
-import * as S from './styles';
+import React from 'react';
+import { SearchIcon } from '../../icons';
+import styles from './SearchInput.module.scss';
 
 interface SearchInputProps {
   value: string;
@@ -14,15 +16,16 @@ export const SearchInput = ({
   placeholder = 'Pesquisar...',
 }: SearchInputProps) => {
   return (
-    <S.Wrapper>
-      <S.Icon />
+    <div className={styles.wrapper}>
+      <SearchIcon className={styles.icon} />
 
-      <S.Input
+      <input
         type="text"
+        className={styles.input}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
       />
-    </S.Wrapper>
+    </div>
   );
 };

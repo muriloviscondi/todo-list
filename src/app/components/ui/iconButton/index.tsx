@@ -1,15 +1,26 @@
-import * as S from './styles';
+import React from 'react';
+import styles from './IconButton.module.scss';
 import { IconButtonProps } from './types';
 
 export const IconButton = ({
   children,
   variant = 'default',
   size = 'md',
+  className,
   ...props
 }: IconButtonProps) => {
+  const buttonClasses = [
+    styles.iconButton,
+    styles[variant],
+    styles[size],
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
-    <S.StyledButton {...props} size={size} variant={variant}>
+    <button type="button" className={buttonClasses} {...props}>
       {children}
-    </S.StyledButton>
+    </button>
   );
 };

@@ -9,7 +9,7 @@ import { Title } from '@/app/components/ui/title';
 import { StatusType } from '@/app/data/mock';
 import TaskToggleButton from '@/app/features/todoList/components/taskToggleButton';
 import { useCallback } from 'react';
-import * as S from './styles';
+import styles from './Card.module.scss';
 
 type CardProps = {
   id: string;
@@ -43,8 +43,13 @@ export const Card = ({
     onDelete(id);
   }, [id, onDelete]);
 
+  const containerClasses = [
+    styles.container,
+    isConcluded ? styles.concluded : styles.pending,
+  ].join(' ');
+
   return (
-    <S.Container $isConcluded={isConcluded}>
+    <div className={containerClasses}>
       <div
         style={{
           display: 'grid',
@@ -82,6 +87,6 @@ export const Card = ({
           </Flex>
         </Flex>
       </div>
-    </S.Container>
+    </div>
   );
 };

@@ -1,24 +1,13 @@
 'use client';
 
-import { useState, useCallback } from 'react';
-
-import styled from 'styled-components';
+import React, { useState, useCallback } from 'react';
 import { Input } from './ui/Input';
 import { Button } from './ui/button';
+import styles from './TodoForm.module.scss';
 
 interface TodoFormProps {
   onCreateTodo: (task: string) => void;
 }
-
-const FormContainer = styled.form`
-  display: flex;
-  gap: 1rem;
-  align-items: flex-end;
-`;
-
-const InputContainer = styled.div`
-  flex: 1;
-`;
 
 export function TodoForm({ onCreateTodo }: TodoFormProps) {
   const [task, setTask] = useState('');
@@ -35,8 +24,8 @@ export function TodoForm({ onCreateTodo }: TodoFormProps) {
   );
 
   return (
-    <FormContainer onSubmit={handleSubmit}>
-      <InputContainer>
+    <form className={styles.formContainer} onSubmit={handleSubmit}>
+      <div className={styles.inputContainer}>
         <Input
           type="text"
           placeholder="Digite uma nova tarefa..."
@@ -44,10 +33,10 @@ export function TodoForm({ onCreateTodo }: TodoFormProps) {
           onChange={(e) => setTask(e.target.value)}
           required
         />
-      </InputContainer>
+      </div>
       <Button type="submit" variant="primary">
         Adicionar
       </Button>
-    </FormContainer>
+    </form>
   );
 }

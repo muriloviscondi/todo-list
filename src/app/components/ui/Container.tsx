@@ -1,16 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styles from './Container.module.scss';
 
 interface ContainerProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-const StyledContainer = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-`;
+export const Container = ({ children, className }: ContainerProps) => {
+  const containerClasses = [styles.container, className]
+    .filter(Boolean)
+    .join(' ');
 
-export const Container = ({ children }: ContainerProps) => {
-  return <StyledContainer>{children}</StyledContainer>;
-}; 
+  return <div className={containerClasses}>{children}</div>;
+};

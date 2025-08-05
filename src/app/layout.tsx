@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { League_Spartan, Roboto } from 'next/font/google';
-
-import { GlobalStyles } from '@/app/styles/global';
-import { StyledComponentsRegistry } from '@/app/config';
+import './styles/globals.css';
 
 const roboto = Roboto({
   variable: '--font-roboto',
@@ -33,10 +31,7 @@ export default function RootLayout({
         className={` ${roboto.variable} ${leagueSpartan.variable} antialiased`}
         suppressHydrationWarning={true}
       >
-        <StyledComponentsRegistry>
-          <GlobalStyles />
-          {children}
-        </StyledComponentsRegistry>
+        {children}
       </body>
     </html>
   );

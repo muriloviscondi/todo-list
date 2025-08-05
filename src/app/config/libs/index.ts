@@ -1,1 +1,1 @@
-export { default as StyledComponentsRegistry } from './styled-components';
+// Exports para outras libs quando necessário

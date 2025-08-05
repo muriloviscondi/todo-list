@@ -1,0 +1,46 @@
+.title {
+  color: #424242;
+  font-weight: 500;
+  text-align: left;
+  margin: 0;
+
+  &.h1 {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+  }
+
+  &.h2 {
+    font-size: clamp(1.125rem, 3vw, 1.5rem);
+  }
+
+  &.h3 {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+  }
+
+  &.h4 {
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+  }
+
+  &.h5 {
+    font-size: clamp(0.75rem, 1.5vw, 1rem);
+  }
+
+  &.h6 {
+    font-size: clamp(0.6875rem, 1vw, 0.875rem);
+  }
+
+  &.lineThrough {
+    text-decoration: line-through;
+  }
+
+  &.alignLeft {
+    text-align: left;
+  }
+
+  &.alignCenter {
+    text-align: center;
+  }
+
+  &.alignRight {
+    text-align: right;
+  }
+}

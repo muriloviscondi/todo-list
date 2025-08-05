@@ -1,5 +1,8 @@
+import React from 'react';
+import { Flex } from '@/app/components/layout';
+import { Button } from '@/app/components/ui/button';
 import { SearchInput } from '@/app/components/ui/searchInput';
-import * as S from './styles';
+import styles from './SearchFilter.module.scss';
 
 export type TaskFilterType = 'all' | 'concluded' | 'pending';
 
@@ -16,33 +19,39 @@ export const SearchFilter = ({
   onChangeFilter,
   onSearch,
 }: Props) => {
+  const getButtonClass = (filter: TaskFilterType) => {
+    return [styles.filterButton, filterInput === filter ? styles.active : '']
+      .filter(Boolean)
+      .join(' ');
+  };
+
   return (
-    <S.Container alignItems="center" gap={'1.5rem'}>
+    <Flex className={styles.container} alignItems="center" gap={'1.5rem'}>
       <SearchInput onChange={onSearch} value={searchTerm} />
 
-      <S.Wrapper>
-        <S.Button
-          $active={filterInput === 'all'}
+      <div className={styles.wrapper}>
+        <Button
+          className={getButtonClass('all')}
           size="sm"
           onClick={() => onChangeFilter('all')}
         >
           Todos
-        </S.Button>
-        <S.Button
-          $active={filterInput === 'concluded'}
+        </Button>
+        <Button
+          className={getButtonClass('concluded')}
           size="sm"
           onClick={() => onChangeFilter('concluded')}
         >
           Concluídas
-        </S.Button>
-        <S.Button
-          $active={filterInput === 'pending'}
+        </Button>
+        <Button
+          className={getButtonClass('pending')}
           size="sm"
           onClick={() => onChangeFilter('pending')}
         >
           Pendentes
-        </S.Button>
-      </S.Wrapper>
-    </S.Container>
+        </Button>
+      </div>
+    </Flex>
   );
 };

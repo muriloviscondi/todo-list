@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledButtonProps, Variant } from '@/app/components/ui/button/types';
-import * as S from './styles';
+import styles from './Button.module.scss';
 
 export interface Props
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -13,19 +13,24 @@ export const Button = ({
   type = 'button',
   shape = 'default',
   active = false,
+  className,
   ...props
 }: Props) => {
+  const buttonClasses = [
+    styles.button,
+    styles[variant],
+    styles[size],
+    shape === 'circle' ? styles.circle : '',
+    active ? styles.active : '',
+    className || '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
-    <S.StyledButton
-      variant={variant}
-      size={size}
-      type={type}
-      shape={shape}
-      active={active}
-      {...props}
-    >
+    <button type={type} className={buttonClasses} {...props}>
       {children}
-    </S.StyledButton>
+    </button>
   );
 };
 

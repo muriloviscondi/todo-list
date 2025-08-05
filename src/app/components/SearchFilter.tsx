@@ -1,8 +1,9 @@
 'use client';
 
+import React from 'react';
 import { Input } from '@/app/components/ui/Input';
 import { Button } from '@/app/components/ui/button';
-import styled from 'styled-components';
+import styles from './SearchFilter.module.scss';
 
 type TaskFilterType = 'all' | 'pending' | 'concluded';
 
@@ -13,35 +14,20 @@ interface SearchFilterProps {
   onFilterChange: (type: TaskFilterType) => void;
 }
 
-const FilterContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const FilterButtons = styled.div`
-  display: flex;
-  gap: 0.5rem;
-`;
-
-const FilterButton = styled(Button)<{ $active: boolean }>`
-  background: ${(props) => (props.$active ? '#007bff' : '#f8f9fa')};
-  color: ${(props) => (props.$active ? 'white' : '#6c757d')};
-  border: 1px solid ${(props) => (props.$active ? '#007bff' : '#dee2e6')};
-
-  &:hover {
-    background: ${(props) => (props.$active ? '#0056b3' : '#e9ecef')};
-  }
-`;
-
 export function SearchFilter({
   searchTerm,
   filterType,
   onSearchChange,
   onFilterChange,
 }: SearchFilterProps) {
+  const getButtonClass = (type: TaskFilterType) => {
+    return [styles.filterButton, filterType === type ? styles.active : '']
+      .filter(Boolean)
+      .join(' ');
+  };
+
   return (
-    <FilterContainer>
+    <div className={styles.filterContainer}>
       <Input
         type="text"
         placeholder="Buscar tarefas..."
@@ -49,29 +35,29 @@ export function SearchFilter({
         onChange={(e) => onSearchChange(e.target.value)}
       />
 
-      <FilterButtons>
-        <FilterButton
+      <div className={styles.filterButtons}>
+        <Button
           size="sm"
-          $active={filterType === 'all'}
+          className={getButtonClass('all')}
           onClick={() => onFilterChange('all')}
         >
           Todas
-        </FilterButton>
-        <FilterButton
+        </Button>
+        <Button
           size="sm"
-          $active={filterType === 'pending'}
+          className={getButtonClass('pending')}
           onClick={() => onFilterChange('pending')}
         >
           Pendentes
-        </FilterButton>
-        <FilterButton
+        </Button>
+        <Button
           size="sm"
-          $active={filterType === 'concluded'}
+          className={getButtonClass('concluded')}
           onClick={() => onFilterChange('concluded')}
         >
           Concluídas
-        </FilterButton>
-      </FilterButtons>
-    </FilterContainer>
+        </Button>
+      </div>
+    </div>
   );
 }

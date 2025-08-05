@@ -1,0 +1,19 @@
+.text {
+  color: inherit;
+  
+  &.sm {
+    font-size: 0.875rem;
+  }
+  
+  &.md {
+    font-size: 1rem;
+  }
+  
+  &.lg {
+    font-size: 1.125rem;
+  }
+  
+  &.lineThrough {
+    text-decoration: line-through;
+  }
+}

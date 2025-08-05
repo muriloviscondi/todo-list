@@ -1,17 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
+import styles from './Divider.module.scss';
 
 interface DividerProps {
   margin?: string;
+  className?: string;
 }
 
-const StyledDivider = styled.hr<DividerProps>`
-  border: none;
-  height: 1px;
-  background-color: #e1e5e9;
-  margin: ${props => props.margin || '1.5rem 0'};
-`;
+export const Divider = ({ margin, className }: DividerProps) => {
+  const dividerClasses = [styles.divider, className].filter(Boolean).join(' ');
+  const dividerStyle = margin ? { margin } : {};
 
-export const Divider = ({ margin }: DividerProps) => {
-  return <StyledDivider margin={margin} />;
-}; 
+  return <hr className={dividerClasses} style={dividerStyle} />;
+};

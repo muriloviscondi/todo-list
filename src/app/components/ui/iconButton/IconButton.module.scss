@@ -1,0 +1,75 @@
+@use "sass:map";
+
+$variants: (
+  danger: (
+    bg: #fdecea,
+    color: #d32f2f,
+    hover: #f9d1cc,
+  ),
+  default: (
+    bg: transparent,
+    color: #676f7e,
+    hover: #e0e0e0,
+  ),
+  primary: (
+    bg: #e8f0fe,
+    color: #1a73e8,
+    hover: #d2e3fc,
+  ),
+  success: (
+    bg: #e6f4ea,
+    color: #388e3c,
+    hover: #c8e6c9,
+  ),
+  warning: (
+    bg: #fff3e0,
+    color: #f57c00,
+    hover: #ffe0b2,
+  ),
+);
+
+$sizes: (
+  sm: 32px,
+  md: 40px,
+  lg: 48px,
+);
+
+.iconButton {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  border-radius: 50% !important;
+  outline: none !important;
+  box-shadow: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+// Variáveis para as cores dos botões
+  @each $variant, $props in $variants {
+    &.#{$variant} {
+      background-color: map.get($props, bg) !important;
+      color: map.get($props, color) !important;
+
+      &:hover:not(:disabled) {
+        background-color: map.get($props, hover) !important;
+      }
+    }
+  }
+
+  // Tamanhos
+  @each $size, $dimension in $sizes {
+    &.#{$size} {
+      width: $dimension !important;
+      height: $dimension !important;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
