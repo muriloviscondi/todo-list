@@ -1,5 +1,5 @@
-import { Flex } from '@layout';
-import { Button as UIButton } from '@ui';
+import { Flex } from '@/app/components/layout';
+import { Button as UIButton } from '@/app/components/ui/button';
 import { styled } from 'styled-components';
 
 export const Container = styled(Flex)`

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { League_Spartan, Roboto } from 'next/font/google';
-import { StyledComponentsRegistry } from '@config';
-import { GlobalStyles } from './styles/global';
+
+import { GlobalStyles } from '@/app/styles/global';
+import { StyledComponentsRegistry } from '@/app/config';
 
 const roboto = Roboto({
   variable: '--font-roboto',

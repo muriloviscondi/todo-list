@@ -1,5 +1,4 @@
-import { SearchInput } from '@ui';
-
+import { SearchInput } from '@/app/components/ui/searchInput';
 import * as S from './styles';
 
 export type TaskFilterType = 'all' | 'concluded' | 'pending';

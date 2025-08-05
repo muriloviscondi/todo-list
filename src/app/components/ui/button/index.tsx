@@ -1,6 +1,6 @@
 import React from 'react';
+import { StyledButtonProps, Variant } from '@/app/components/ui/button/types';
 import * as S from './styles';
-import { StyledButtonProps } from './types';
 
 export interface Props
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -28,3 +28,5 @@ export const Button = ({
     </S.StyledButton>
   );
 };
+
+export type { Variant, StyledButtonProps };

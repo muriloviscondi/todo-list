@@ -1,5 +1,5 @@
-import { SearchIcon } from '@icons';
 import { styled } from 'styled-components';
+import { SearchIcon } from '../../icons';
 
 export const Wrapper = styled.div`
   position: relative;

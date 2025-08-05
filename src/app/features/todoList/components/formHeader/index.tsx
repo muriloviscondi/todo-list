@@ -1,8 +1,9 @@
 'use client';
 
-import { PlusIcon } from '@icons';
-import { Flex } from '@layout';
-import { Button, Input } from '@ui';
+import { PlusIcon } from '@/app/components/icons';
+import { Flex } from '@/app/components/layout';
+import { Button } from '@/app/components/ui/button';
+import { Input } from '@/app/components/ui/Input';
 
 type Props = {
   inputTitle: string;

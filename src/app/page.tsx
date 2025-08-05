@@ -1,17 +1,18 @@
 'use client';
 
-import { Container, Flex } from '@layout';
+import { Container, Flex } from '@/app/components/layout';
+import { Divider } from '@/app/components/ui/Divider';
+import { Title } from '@/app/components/ui/title';
+import { TodoItem, todoListMock } from '@/app/data/mock';
 import {
   Card,
   CardContainer,
   FormHeader,
   SearchFilter,
   TaskFilterType,
-} from '@todoList';
-import { Divider, Title } from '@ui';
-import { formatDate } from '@utils';
+} from '@/app/features/todoList';
+import { formatDate } from '@/app/utils';
 import { useCallback, useMemo, useState } from 'react';
-import { TodoItem, todoListMock } from './data/mock';
 
 export default function HomePage() {
   const [data, setData] = useState(todoListMock);
@@ -22,13 +23,18 @@ export default function HomePage() {
   const [inputProps, setInputProps] = useState('');
 
   const cardData = useMemo(() => {
-    return !!searchTerm || filterInput !== 'all'
-      ? data.filter(
-          (item) =>
-            item.task.toLowerCase().includes(searchTerm.toLowerCase()) &&
-            (filterInput === 'all' || item.status === filterInput)
-        )
-      : data;
+    return (
+      !!searchTerm || filterInput !== 'all'
+        ? data.filter(
+            (item) =>
+              item.task.toLowerCase().includes(searchTerm.toLowerCase()) &&
+              (filterInput === 'all' || item.status === filterInput)
+          )
+        : data
+    ).sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
   }, [data, filterInput, searchTerm]);
 
   const handleChangeStatus = useCallback((id: string) => {
