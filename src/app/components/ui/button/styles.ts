@@ -1,4 +1,3 @@
-// components/ui/Button/styles.ts
 import styled, { css } from 'styled-components';
 import { sizeStyles, variantStyles } from './constants';
 import { StyledButtonProps } from './types';

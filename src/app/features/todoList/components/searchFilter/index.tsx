@@ -18,28 +18,27 @@ export const SearchFilter = ({
   onSearch,
 }: Props) => {
   return (
-    <S.Container
-      gap={'1.5rem'}
-      alignItems="center"
-      style={{ display: 'inline-flex' }}
-    >
+    <S.Container alignItems="center" gap={'1.5rem'}>
       <SearchInput onChange={onSearch} value={searchTerm} />
 
       <S.Wrapper>
         <S.Button
           $active={filterInput === 'all'}
+          size="sm"
           onClick={() => onChangeFilter('all')}
         >
           Todos
         </S.Button>
         <S.Button
           $active={filterInput === 'concluded'}
+          size="sm"
           onClick={() => onChangeFilter('concluded')}
         >
           Concluídas
         </S.Button>
         <S.Button
           $active={filterInput === 'pending'}
+          size="sm"
           onClick={() => onChangeFilter('pending')}
         >
           Pendentes

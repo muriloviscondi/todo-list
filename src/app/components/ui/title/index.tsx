@@ -1,11 +1,9 @@
 import { JSX } from 'react';
+import { TitleProps } from './types';
+
 import * as S from './styles';
 
-export const Title: React.FC<S.TitleProps> = ({
-  level = 2,
-  children,
-  ...rest
-}) => {
+export const Title = ({ level = 2, children, ...rest }: TitleProps) => {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
   return (
     <S.StyledTitle as={Tag} level={level} {...rest}>

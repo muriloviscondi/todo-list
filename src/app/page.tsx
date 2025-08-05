@@ -1,8 +1,14 @@
 'use client';
 
 import { Container, Flex } from '@layout';
-import { Card, FormHeader, SearchFilter, TaskFilterType } from '@todoList';
-import { Divider } from '@ui';
+import {
+  Card,
+  CardContainer,
+  FormHeader,
+  SearchFilter,
+  TaskFilterType,
+} from '@todoList';
+import { Divider, Title } from '@ui';
 import { formatDate } from '@utils';
 import { useCallback, useMemo, useState } from 'react';
 import { TodoItem, todoListMock } from './data/mock';
@@ -67,49 +73,41 @@ export default function HomePage() {
   }, []);
 
   return (
-    <>
-      <Container>
-        <Flex
-          alignItems="flex-start"
-          justifyContent="space-between"
-          gap={'1rem'}
-        >
-          <FormHeader
-            inputTitle={inputProps}
-            onInputChange={handleInputTaskChange}
-            onConclude={handleCreateTask}
-          />
-        </Flex>
+    <Container>
+      <Title level={1}>Lista de Tarefas</Title>
 
-        <Divider />
-
-        <SearchFilter
-          filterInput={filterInput}
-          searchTerm={searchTerm}
-          onChangeFilter={setFilterInput}
-          onSearch={handleSearch}
+      <Flex alignItems="flex-start" justifyContent="space-between" gap={'1rem'}>
+        <FormHeader
+          inputTitle={inputProps}
+          onInputChange={handleInputTaskChange}
+          onConclude={handleCreateTask}
         />
+      </Flex>
 
-        <Divider />
+      <Divider />
 
-        <Flex
-          direction="column"
-          gap="1rem"
-          style={{ maxHeight: 'calc(100vh - 18.375rem)', overflowY: 'auto' }}
-        >
-          {cardData.map((item) => (
-            <Card
-              key={item.id}
-              id={item.id}
-              title={item.task}
-              footer={`Data de criação: ${formatDate(item.createdAt)}`}
-              status={item.status}
-              onToggle={handleChangeStatus}
-              onDelete={handleDelete}
-            />
-          ))}
-        </Flex>
-      </Container>
-    </>
+      <SearchFilter
+        filterInput={filterInput}
+        searchTerm={searchTerm}
+        onChangeFilter={setFilterInput}
+        onSearch={handleSearch}
+      />
+
+      <Divider />
+
+      <CardContainer direction="column" gap="1rem">
+        {cardData.map((item) => (
+          <Card
+            key={item.id}
+            id={item.id}
+            title={item.task}
+            footer={`Data de criação: ${formatDate(item.createdAt)}`}
+            status={item.status}
+            onToggle={handleChangeStatus}
+            onDelete={handleDelete}
+          />
+        ))}
+      </CardContainer>
+    </Container>
   );
 }

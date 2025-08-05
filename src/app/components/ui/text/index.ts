@@ -1,22 +1,6 @@
 import styled, { css } from 'styled-components';
-import React from 'react';
-
-interface TextProps extends React.HTMLAttributes<HTMLSpanElement> {
-  align?: 'left' | 'center' | 'right';
-  color?: string;
-  family?: string;
-  margin?: string;
-  size?: 'sm' | 'md' | 'lg';
-  weight?: number | string;
-  children: React.ReactNode;
-  $isLineThrough?: boolean;
-}
-
-const fontSizeMap = {
-  sm: '0.875rem', // 14px
-  md: '1rem', // 16px
-  lg: '1.125rem', // 18px
-};
+import { fontSizeMap } from './constants';
+import { TextProps } from './type';
 
 export const Text = styled.span.withConfig({
   shouldForwardProp: (prop) =>

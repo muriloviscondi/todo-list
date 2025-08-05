@@ -27,10 +27,10 @@ export const FormHeader = ({
         width={'100%'}
         value={inputTitle}
         onChange={(e) => onInputChange(e.target.value)}
-        placeholder="Tarefa a realizar"
+        placeholder="Adicionar nova tarefa"
       />
 
-      <Button shape="circle" variant="success" onClick={onConclude}>
+      <Button shape="circle" size="sm" variant="success" onClick={onConclude}>
         <PlusIcon size={12} />
       </Button>
     </Flex>

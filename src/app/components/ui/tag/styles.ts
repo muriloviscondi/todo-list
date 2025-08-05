@@ -4,7 +4,6 @@ import { TagType } from '.';
 
 export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
   type?: TagType;
-  // description: string;
 }
 
 const variantStyles: Record<TagType, { bg: string; color: string }> = {
