@@ -9,7 +9,7 @@ export const StyledTitle = styled.h1.withConfig({
     ),
 })<TitleProps>`
   font-size: ${({ level = 2 }) => fontSizeMap[level]};
-  color: ${({ color = '#2b303b' }) => color};
+  color: ${({ color = '#424242' }) => color};
   font-weight: ${({ weight = 500 }) => weight};
   text-align: ${({ align = 'left' }) => align};
   margin: ${({ margin = '0' }) => margin};

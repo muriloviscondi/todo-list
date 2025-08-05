@@ -15,7 +15,7 @@ export const Text = styled.span.withConfig({
     ].includes(prop),
 })<TextProps>`
   display: block;
-  color: ${({ color = '#676f7e' }) => color};
+  color: ${({ color = '#757575' }) => color};
   font-family: ${({ family = 'var(--font-roboto)' }) => family};
   font-size: ${({ size = 'md' }) => fontSizeMap[size]};
   font-weight: ${({ weight = 400 }) => weight};

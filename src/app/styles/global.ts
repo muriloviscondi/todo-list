@@ -16,7 +16,7 @@ export const GlobalStyles = css`
   }
 
   body {
-    background-color: #f5f7f9;
+    background-color: #f5f5f5;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
       var(--font-roboto), sans-serif;
   }

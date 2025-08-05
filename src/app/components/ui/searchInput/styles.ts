@@ -13,20 +13,20 @@ export const Icon = styled(SearchIcon)`
   width: 18px;
   height: 18px;
   transform: translateY(-50%);
-  color: #999;
+  color: #9e9e9e;
   pointer-events: none;
 `;
 
 export const Input = styled.input`
   width: 100%;
   padding: 10px 12px 10px 36px;
-  border: 1px solid #ccc;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
   font-size: 0.95rem;
   transition: border-color 0.2s ease;
 
   &:focus {
     outline: none;
-    border-color: #1a73e8;
+    border-color: #03a9f4;
   }
 `;
