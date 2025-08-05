@@ -28,7 +28,10 @@
       "@ui": ["./src/app/components/ui/index.ts"],
 
       // Features paths
-      "@toDoList": ["./src/app/features/todoList/index.ts"],
+      "@todoList": ["./src/app/features/todoList/index.ts"],
+
+      // Utils paths
+      "@utils": ["./src/app/utils/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
