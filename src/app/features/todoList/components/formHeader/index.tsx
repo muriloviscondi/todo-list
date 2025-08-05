@@ -6,13 +6,13 @@ import { Button, Input } from '@ui';
 
 type Props = {
   inputTitle: string;
-  onTitleChange: (value: string) => void;
+  onInputChange: (value: string) => void;
   onConclude: () => void;
 };
 
 export const FormHeader = ({
   inputTitle,
-  onTitleChange,
+  onInputChange,
   onConclude,
 }: Props) => {
   return (
@@ -26,7 +26,7 @@ export const FormHeader = ({
       <Input
         width={'100%'}
         value={inputTitle}
-        onChange={(e) => onTitleChange(e.target.value)}
+        onChange={(e) => onInputChange(e.target.value)}
         placeholder="Task title"
       />
 

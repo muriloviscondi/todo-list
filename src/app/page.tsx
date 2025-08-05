@@ -5,12 +5,7 @@ import { Card, FormHeader, SearchFilter, TaskFilterType } from '@todoList';
 import { Divider } from '@ui';
 import { formatDate } from '@utils';
 import { useCallback, useMemo, useState } from 'react';
-import { todoListMock } from './data/mock';
-
-const defaultInputProps = {
-  title: '',
-  description: '',
-};
+import { TodoItem, todoListMock } from './data/mock';
 
 export default function HomePage() {
   const [data, setData] = useState(todoListMock);
@@ -18,7 +13,7 @@ export default function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterInput, setFilterInput] = useState<TaskFilterType>('all');
 
-  const [inputProps, setInputProps] = useState(defaultInputProps);
+  const [inputProps, setInputProps] = useState('');
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandChange = () => setExpanded((state) => !state);
@@ -27,10 +22,7 @@ export default function HomePage() {
     return !!searchTerm || filterInput !== 'all'
       ? data.filter(
           (item) =>
-            (item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-              item.description
-                .toLowerCase()
-                .includes(searchTerm.toLowerCase())) &&
+            item.task.toLowerCase().includes(searchTerm.toLowerCase()) &&
             (filterInput === 'all' || item.status === filterInput)
         )
       : data;
@@ -53,8 +45,28 @@ export default function HomePage() {
     setSearchTerm(term);
   }, []);
 
-  const handleTitleChange = useCallback((value: string) => {
-    setInputProps((prev) => ({ ...prev, title: value }));
+  const handleInputTaskChange = useCallback((value: string) => {
+    setInputProps(value);
+  }, []);
+
+  const handleCreateTask = useCallback(() => {
+    if (inputProps.trim() === '') {
+      return;
+    }
+
+    const newTask: TodoItem = {
+      id: String(Date.now()),
+      task: inputProps,
+      status: 'pending',
+      createdAt: new Date(),
+    };
+
+    setData((prevData) => [...prevData, newTask]);
+    setInputProps('');
+  }, [inputProps]);
+
+  const handleDelete = useCallback((id: string) => {
+    setData((prevData) => prevData.filter((item) => item.id !== id));
   }, []);
 
   return (
@@ -66,9 +78,9 @@ export default function HomePage() {
           gap={'1rem'}
         >
           <FormHeader
-            inputTitle={inputProps.title}
-            onTitleChange={handleTitleChange}
-            onConclude={() => {}}
+            inputTitle={inputProps}
+            onInputChange={handleInputTaskChange}
+            onConclude={handleCreateTask}
           />
         </Flex>
 
@@ -92,11 +104,11 @@ export default function HomePage() {
             <Card
               key={item.id}
               id={item.id}
-              title={item.title}
-              description={item.description}
+              title={item.task}
               footer={`Data de criação: ${formatDate(item.createdAt)}`}
               status={item.status}
               onToggle={handleChangeStatus}
+              onDelete={handleDelete}
             />
           ))}
         </Flex>

@@ -1,35 +1,39 @@
 'use client';
 
+import { DeleteIcon } from '@icons';
 import { Flex } from '@layout';
-import { Tag, Text, Title } from '@ui';
+import { IconButton, Tag, Text, Title } from '@ui';
+import { useCallback } from 'react';
 import { StatusType } from '../../../../data/mock';
 import TaskToggleButton from '../taskToggleButton';
 import * as S from './styles';
-import { useCallback } from 'react';
-import { ActionButtons } from '../actionButtons';
 
 type CardProps = {
   id: string;
   title: string;
-  description: string;
   footer: string;
   status: StatusType;
   onToggle?: (id: string) => void;
+  onDelete: (id: string) => void;
 };
 
 export const Card = ({
   id,
   title,
-  description,
   footer,
   status,
   onToggle,
+  onDelete,
 }: CardProps) => {
   const isConcluded = status === 'concluded';
 
   const handleToggle = useCallback(() => {
     onToggle?.(id);
   }, [id, onToggle]);
+
+  const handleDelete = useCallback(() => {
+    onDelete(id);
+  }, [id, onDelete]);
 
   return (
     <S.Container $isConcluded={isConcluded}>
@@ -49,9 +53,16 @@ export const Card = ({
             <Title level={5} $isLineThrough={isConcluded}>
               {title}
             </Title>
-            <ActionButtons id={id} />
+            <IconButton
+              size="sm"
+              variant="danger"
+              aria-label="Delete item"
+              onClick={handleDelete}
+            >
+              <DeleteIcon size={16} />
+            </IconButton>
           </Flex>
-          <Text $isLineThrough={isConcluded}>{description}</Text>
+
           <Flex alignItems="center" justifyContent="space-between">
             <Text size="sm" $isLineThrough={isConcluded}>
               {footer}
