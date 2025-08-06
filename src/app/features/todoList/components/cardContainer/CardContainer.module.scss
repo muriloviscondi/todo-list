@@ -1,13 +1,13 @@
 .cardContainer {
   display: flex;
   overflow-y: auto;
-  max-height: calc(100vh - 22.625rem);
+  max-height: calc(100vh - 18.625rem);
 
   @media (max-width: 768px) {
-    max-height: calc(100vh - 23.375rem);
+    max-height: calc(100vh - 20.125rem);
   }
 
   @media (max-width: 520px) {
-    max-height: calc(100vh - 22.75rem);
+    max-height: calc(100vh - 19.5rem);
   }
 }

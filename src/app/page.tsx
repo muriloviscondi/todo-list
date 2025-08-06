@@ -1,7 +1,7 @@
 'use client';
 
 import { Container, Flex } from '@/app/components/layout';
-import { Divider, Title } from '@/app/components/ui';
+import { Divider, EmptyState, Title } from '@/app/components/ui';
 import { TodoItem, todoListMock } from '@/app/data/mock';
 import {
   Card,
@@ -101,17 +101,32 @@ export default function HomePage() {
       <Divider />
 
       <CardContainer direction="column" gap="1rem">
-        {cardData.map((item) => (
-          <Card
-            key={item.id}
-            id={item.id}
-            title={item.task}
-            footer={`Data de criação: ${formatDate(item.createdAt)}`}
-            status={item.status}
-            onToggle={handleChangeStatus}
-            onDelete={handleDelete}
+        {cardData.length > 0 ? (
+          cardData.map((item) => (
+            <Card
+              key={item.id}
+              id={item.id}
+              title={item.task}
+              footer={`Data de criação: ${formatDate(item.createdAt)}`}
+              status={item.status}
+              onToggle={handleChangeStatus}
+              onDelete={handleDelete}
+            />
+          ))
+        ) : (
+          <EmptyState
+            title={
+              searchTerm || filterInput !== 'all'
+                ? 'Nenhuma tarefa encontrada'
+                : 'Lista vazia'
+            }
+            description={
+              searchTerm || filterInput !== 'all'
+                ? 'Nenhuma tarefa corresponde aos filtros aplicados. Tente ajustar a busca ou criar uma nova tarefa.'
+                : 'Você ainda não possui tarefas. Comece criando sua primeira tarefa usando o formulário acima.'
+            }
           />
-        ))}
+        )}
       </CardContainer>
     </Container>
   );

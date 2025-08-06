@@ -1,5 +1,6 @@
 export * from './button';
 export * from './divider';
+export * from './emptyState';
 export * from './iconButton';
 export * from './input';
 export * from './searchInput';
