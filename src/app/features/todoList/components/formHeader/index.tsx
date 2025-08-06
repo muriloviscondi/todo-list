@@ -15,6 +15,13 @@ export const FormHeader = ({
   onInputChange,
   onConclude,
 }: Props) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      onConclude();
+    }
+  };
+
   return (
     <Flex
       key={'form'}
@@ -26,6 +33,7 @@ export const FormHeader = ({
       <Input
         value={inputTitle}
         onChange={(e) => onInputChange(e.target.value)}
+        onKeyDown={handleKeyDown}
         placeholder="Adicionar nova tarefa"
         style={{ width: '100%' }}
       />
