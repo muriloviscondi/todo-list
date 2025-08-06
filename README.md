@@ -4,7 +4,7 @@ Uma aplicação web moderna e completa para gerenciamento de tarefas, desenvolvi
 
 ## 🚀 Demonstração
 
-<a href="https://to-do-list-lime-one-52.vercel.app/" target="_blank">[Link da aplicação hospedada]</a>
+<a href="https://to-do-list-lime-one-52.vercel.app/" target="_blank">Link da aplicação hospedada</a>
 
 ## 📋 Sobre o Projeto
 
