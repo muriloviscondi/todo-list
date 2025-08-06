@@ -399,7 +399,7 @@ A aplicação segue as diretrizes WCAG 2.1:
 
 ## 👤 Autor
 
-Desenvolvido por [Murilo Viscondi](https://github.com/muriloviscondi)
+Desenvolvido por [Murilo Viscondi](https://www.linkedin.com/in/murilo-viscondi/)
 
 ## 📄 Licença
 
