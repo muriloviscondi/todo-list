@@ -2,7 +2,7 @@
 
 import { Container, Flex } from '@/app/components/layout';
 import { Divider, EmptyState, Title } from '@/app/components/ui';
-import { TodoItem, todoListMock } from '@/app/data/mock';
+import { StatusType, TodoItem } from '@/app/data/mock';
 import {
   Card,
   CardContainer,
@@ -10,11 +10,23 @@ import {
   SearchFilter,
   TaskFilterType,
 } from '@/app/features/todoList';
-import { formatDate } from '@/app/utils';
-import { useCallback, useMemo, useState } from 'react';
+import { formatDate, generateId } from '@/app/utils';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useTodoDataLocalStorage } from './hooks/useTodoDataLocalStorage';
 
 export default function HomePage() {
-  const [data, setData] = useState(todoListMock);
+  const { getTodosFromLocalStorage, saveTodosToLocalStorage } =
+    useTodoDataLocalStorage();
+
+  const [data, setData] = useState<TodoItem[]>(getTodosFromLocalStorage());
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Carregar dados do localStorage após a hidratação
+  useEffect(() => {
+    const loadedData = getTodosFromLocalStorage();
+    setData(loadedData);
+    setIsLoaded(true);
+  }, [getTodosFromLocalStorage]);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [filterInput, setFilterInput] = useState<TaskFilterType>('all');
@@ -32,22 +44,29 @@ export default function HomePage() {
         : data
     ).sort(
       (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime() &&
+        b.status.localeCompare(a.status)
     );
   }, [data, filterInput, searchTerm]);
 
-  const handleChangeStatus = useCallback((id: string) => {
-    setData((prevData) =>
-      prevData.map((item) =>
+  const handleChangeStatus = useCallback(
+    (id: string) => {
+      const newTodoList = data.map((item) =>
         item.id === id
           ? {
               ...item,
-              status: item.status === 'concluded' ? 'pending' : 'concluded',
+              status: (item.status === 'concluded'
+                ? 'pending'
+                : 'concluded') as StatusType,
             }
           : item
-      )
-    );
-  }, []);
+      );
+
+      setData(newTodoList);
+      saveTodosToLocalStorage(newTodoList);
+    },
+    [data, saveTodosToLocalStorage]
+  );
 
   const handleSearch = useCallback((term: string) => {
     setSearchTerm(term);
@@ -63,19 +82,28 @@ export default function HomePage() {
     }
 
     const newTask: TodoItem = {
-      id: String(Date.now()),
+      id: generateId(),
       task: inputProps,
       status: 'pending',
       createdAt: new Date(),
     };
 
-    setData((prevData) => [...prevData, newTask]);
-    setInputProps('');
-  }, [inputProps]);
+    const newTodoList = [...data, newTask];
 
-  const handleDelete = useCallback((id: string) => {
-    setData((prevData) => prevData.filter((item) => item.id !== id));
-  }, []);
+    saveTodosToLocalStorage(newTodoList);
+    setData(newTodoList);
+    setInputProps('');
+  }, [data, inputProps, saveTodosToLocalStorage]);
+
+  const handleDelete = useCallback(
+    (id: string) => {
+      const newTodoList = data.filter((item) => item.id !== id);
+
+      setData(newTodoList);
+      saveTodosToLocalStorage(newTodoList);
+    },
+    [data, saveTodosToLocalStorage]
+  );
 
   return (
     <Container>
@@ -100,34 +128,36 @@ export default function HomePage() {
 
       <Divider />
 
-      <CardContainer direction="column" gap="1rem">
-        {cardData.length > 0 ? (
-          cardData.map((item) => (
-            <Card
-              key={item.id}
-              id={item.id}
-              title={item.task}
-              footer={`Data de criação: ${formatDate(item.createdAt)}`}
-              status={item.status}
-              onToggle={handleChangeStatus}
-              onDelete={handleDelete}
+      {isLoaded && (
+        <CardContainer direction="column" gap="1rem">
+          {cardData.length > 0 ? (
+            cardData.map((item) => (
+              <Card
+                key={item.id}
+                id={item.id}
+                title={item.task}
+                footer={`Data de criação: ${formatDate(item.createdAt)}`}
+                status={item.status}
+                onToggle={handleChangeStatus}
+                onDelete={handleDelete}
+              />
+            ))
+          ) : (
+            <EmptyState
+              title={
+                searchTerm || filterInput !== 'all'
+                  ? 'Nenhuma tarefa encontrada'
+                  : 'Lista vazia'
+              }
+              description={
+                searchTerm || filterInput !== 'all'
+                  ? 'Nenhuma tarefa corresponde aos filtros aplicados. Tente ajustar a busca ou criar uma nova tarefa.'
+                  : 'Você ainda não possui tarefas. Comece criando sua primeira tarefa usando o formulário acima.'
+              }
             />
-          ))
-        ) : (
-          <EmptyState
-            title={
-              searchTerm || filterInput !== 'all'
-                ? 'Nenhuma tarefa encontrada'
-                : 'Lista vazia'
-            }
-            description={
-              searchTerm || filterInput !== 'all'
-                ? 'Nenhuma tarefa corresponde aos filtros aplicados. Tente ajustar a busca ou criar uma nova tarefa.'
-                : 'Você ainda não possui tarefas. Comece criando sua primeira tarefa usando o formulário acima.'
-            }
-          />
-        )}
-      </CardContainer>
+          )}
+        </CardContainer>
+      )}
     </Container>
   );
 }

@@ -3,18 +3,14 @@
   padding: 0.75rem 1rem;
   border: 1px solid #e6f7ff;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 14px;
   transition: border-color 0.2s ease;
   
   &:focus {
     outline: none;
     border-color: #0E89FF;
     box-shadow: 0 0 0 3px rgba(14, 137, 255, 0.1);
-  }
-  
-  &::placeholder {
-    color: #00CFFF;
-  }
+  }  
   
   &:disabled {
     background-color: #f0f8ff;

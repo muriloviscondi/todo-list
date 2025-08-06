@@ -28,19 +28,21 @@ export const Title = ({
   const titleClasses = [
     styles.title,
     styles[`h${level}`],
-    $isLineThrough ? styles.lineThrough : '',
+    $isLineThrough ? styles.lineThrough : null,
     align !== 'left'
       ? styles[`align${align.charAt(0).toUpperCase() + align.slice(1)}`]
-      : '',
-    className,
+      : null,
+    className || null,
   ]
-    .filter(Boolean)
+    .filter(
+      (cls): cls is string => cls !== null && cls !== undefined && cls !== ''
+    )
     .join(' ');
 
-  const titleStyle = {
-    color: color !== '#0E89FF' ? color : undefined,
-    fontWeight: weight !== 500 ? weight : undefined,
-    margin: margin !== '0' ? margin : undefined,
+  const titleStyle: React.CSSProperties = {
+    ...(color !== '#0E89FF' && { color }),
+    ...(weight !== 500 && { fontWeight: weight }),
+    ...(margin !== '0' && { margin }),
     ...style,
   };
 
