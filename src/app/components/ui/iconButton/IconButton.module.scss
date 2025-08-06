@@ -2,29 +2,29 @@
 
 $variants: (
   danger: (
-    bg: #fdecea,
-    color: #d32f2f,
-    hover: #f9d1cc,
+    bg: #ffe6f0,
+    color: #FF0080,
+    hover: #ffccdd,
   ),
   default: (
     bg: transparent,
-    color: #676f7e,
-    hover: #e0e0e0,
+    color: #0E89FF,
+    hover: #e6f7ff,
   ),
   primary: (
-    bg: #e8f0fe,
-    color: #1a73e8,
-    hover: #d2e3fc,
+    bg: #e6f7ff,
+    color: #0E89FF,
+    hover: #cceeff,
   ),
   success: (
-    bg: #e6f4ea,
-    color: #388e3c,
-    hover: #c8e6c9,
+    bg: #e0ffe0,
+    color: #00FF00,
+    hover: #ccffcc,
   ),
   warning: (
     bg: #fff3e0,
-    color: #f57c00,
-    hover: #ffe0b2,
+    color: #FF7F00,
+    hover: #ffe6cc,
   ),
 );
 

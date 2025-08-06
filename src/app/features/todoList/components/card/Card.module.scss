@@ -1,18 +1,18 @@
 .container {
-  border: 1px solid #e0e0e0;
+  border: 1px solid #e6f7ff;
   border-radius: 1rem;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 4px rgba(14, 137, 255, 0.08);
   border-left-width: 5px;
   border-left-style: solid;
 
   &.concluded {
-    background: #f3f9ff;
-    border-left-color: #4caf50;
+    background: #e0ffe0;
+    border-left-color: #00FF00;
   }
 
   &.pending {
-    background: #fff8e1;
-    border-left-color: #ff9800;
+    background: #fff3e0;
+    border-left-color: #FF7F00;
   }
 }

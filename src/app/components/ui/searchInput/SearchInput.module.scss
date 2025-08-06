@@ -10,20 +10,20 @@
   width: 18px;
   height: 18px;
   transform: translateY(-50%);
-  color: #9e9e9e;
+  color: #00CFFF;
   pointer-events: none;
 }
 
 .input {
   width: 100%;
   padding: 10px 12px 10px 36px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #e6f7ff;
   border-radius: 8px;
   font-size: 0.95rem;
   transition: border-color 0.2s ease;
 
   &:focus {
     outline: none;
-    border-color: #03a9f4;
+    border-color: #0E89FF;
   }
 }

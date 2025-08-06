@@ -13,7 +13,7 @@ export interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
 
 export const Title = ({
   level = 2,
-  color = '#424242',
+  color = '#0E89FF',
   weight = 500,
   align = 'left',
   margin = '0',
@@ -38,7 +38,7 @@ export const Title = ({
     .join(' ');
 
   const titleStyle = {
-    color: color !== '#424242' ? color : undefined,
+    color: color !== '#0E89FF' ? color : undefined,
     fontWeight: weight !== 500 ? weight : undefined,
     margin: margin !== '0' ? margin : undefined,
     ...style,
