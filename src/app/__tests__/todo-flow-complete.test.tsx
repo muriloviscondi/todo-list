@@ -6,6 +6,7 @@ import HomePage from '../page';
 // Mock para styled-components e outras dependências
 jest.mock('@/app/utils', () => ({
   formatDate: (date: Date) => date.toLocaleDateString('pt-BR'),
+  generateId: () => `test-id-${Math.random().toString(36).substring(2, 11)}`,
 }));
 
 describe('Todo List - Testes de Fluxo', () => {
